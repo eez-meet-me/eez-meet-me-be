@@ -70,4 +70,36 @@ describe('pin routes', () => {
         });
       });
   });
+
+  it('can UPDATE a pin', async() => {
+    const pin = await Pin.create({ 
+      title: 'this is a title2',
+      address: 'birmingham',
+      user: 'kayt',
+      startTime: '7pm',
+      endTime: '11pm'
+    });
+
+    return request(app)
+      .put(`/api/v1/pins/${pin._id}`)
+      .send({ endTime: '12:00 pm' })
+      .then(res => {
+        expect(res.body.endTime).toEqual('12:00 pm');
+      });
+  });
+
+  it('can DELETE a pin', async() => {
+    const pin = await Pin.create({ 
+      title: 'this is a title2',
+      address: 'birmingham',
+      user: 'kayt',
+      startTime: '7pm',
+      endTime: '11pm'
+    });
+    return request(app)
+      .delete(`/api/v1/pins/${pin._id}`)
+      .then(res => {
+        expect(res.body.title).toEqual('this is a title2');
+      });
+  });
 });
