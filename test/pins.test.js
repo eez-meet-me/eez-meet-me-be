@@ -5,7 +5,6 @@ const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const Pin = require('../lib/models/Pin');
-const getGeoCoordinates = require('../lib/services/formatAddress');
 
 describe('pin routes', () => {
   beforeAll(() => {
