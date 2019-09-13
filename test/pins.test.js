@@ -5,6 +5,7 @@ const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const Pin = require('../lib/models/Pin');
+const getGeoCoordinates = require('../lib/services/formatAddress');
 
 describe('pin routes', () => {
   beforeAll(() => {
@@ -24,7 +25,7 @@ describe('pin routes', () => {
       .post('/api/v1/pins')
       .send({
         title: 'this is a title',
-        address: 'portland.',
+        address: 'alchemy code lab',
         user: 'erin',
         startTime: '8pm',
         endTime: '10pm'
@@ -33,7 +34,9 @@ describe('pin routes', () => {
         expect(res.body).toEqual({ 
           _id: expect.any(String),
           title: 'this is a title',
-          address: 'portland.',
+          lat: expect.any(Number),
+          lng: expect.any(Number),
+          address: expect.any(String),
           user: 'erin',
           startTime: '8pm',
           endTime: '10pm',
@@ -45,13 +48,17 @@ describe('pin routes', () => {
   it('can get an array of pins with GET', async() => {
     await Pin.create([
       { title: 'this is a title',
-        address: 'portland.',
+        lat: 24,
+        lng: 24,
+        address: 'portland, or',
         user: 'erin',
         startTime: '8pm',
         endTime: '10pm' },
 
       { title: 'this is a title2',
-        address: 'birmingham',
+        lat: 26,
+        lng: 27,
+        address: 'birmingham, al',
         user: 'kayt',
         startTime: '7pm',
         endTime: '11pm' }
@@ -62,7 +69,9 @@ describe('pin routes', () => {
         expect(res.body).toContainEqual({
           _id: expect.any(String),
           title: 'this is a title2', 
-          address: 'birmingham',
+          lat: expect.any(Number),
+          lng: expect.any(Number),
+          address: expect.any(String),
           user: 'kayt',
           startTime: '7pm',
           endTime: '11pm',
@@ -74,6 +83,8 @@ describe('pin routes', () => {
   it('can UPDATE a pin', async() => {
     const pin = await Pin.create({ 
       title: 'this is a title2',
+      lat: 24,
+      lng: 24,
       address: 'birmingham',
       user: 'kayt',
       startTime: '7pm',
@@ -91,6 +102,8 @@ describe('pin routes', () => {
   it('can DELETE a pin', async() => {
     const pin = await Pin.create({ 
       title: 'this is a title2',
+      lat: 24,
+      lng: 24,
       address: 'birmingham',
       user: 'kayt',
       startTime: '7pm',
