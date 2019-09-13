@@ -23,7 +23,8 @@ describe('pin routes', () => {
     return request(app)
       .post('/api/v1/pins')
       .send({
-        title: 'this is a title',
+        where: 'this is a where',
+        message: 'this is a message',
         address: 'alchemy code lab',
         user: 'erin',
         startTime: '8pm',
@@ -32,7 +33,8 @@ describe('pin routes', () => {
       .then(res => {
         expect(res.body).toEqual({ 
           _id: expect.any(String),
-          title: 'this is a title',
+          where: 'this is a where',
+          message: 'this is a message',
           lat: expect.any(Number),
           lng: expect.any(Number),
           address: expect.any(String),
@@ -46,7 +48,8 @@ describe('pin routes', () => {
 
   it('can get an array of pins with GET', async() => {
     await Pin.create([
-      { title: 'this is a title',
+      { where: 'this is a where',
+        message: 'this is a message',
         lat: 24,
         lng: 24,
         address: 'portland, or',
@@ -54,7 +57,8 @@ describe('pin routes', () => {
         startTime: '8pm',
         endTime: '10pm' },
 
-      { title: 'this is a title2',
+      { where: 'this is a where2',
+        message: 'this is a message',
         lat: 26,
         lng: 27,
         address: 'birmingham, al',
@@ -67,7 +71,8 @@ describe('pin routes', () => {
       .then(res => {
         expect(res.body).toContainEqual({
           _id: expect.any(String),
-          title: 'this is a title2', 
+          where: 'this is a where2', 
+          message: 'this is a message',
           lat: expect.any(Number),
           lng: expect.any(Number),
           address: expect.any(String),
@@ -81,7 +86,8 @@ describe('pin routes', () => {
 
   it('can UPDATE a pin', async() => {
     const pin = await Pin.create({ 
-      title: 'this is a title2',
+      where: 'this is a where2',
+      message: 'this is a message2',
       lat: 24,
       lng: 24,
       address: 'birmingham',
@@ -100,7 +106,8 @@ describe('pin routes', () => {
 
   it('can DELETE a pin', async() => {
     const pin = await Pin.create({ 
-      title: 'this is a title2',
+      where: 'this is a where2',
+      message: 'this is a message',
       lat: 24,
       lng: 24,
       address: 'birmingham',
@@ -111,7 +118,7 @@ describe('pin routes', () => {
     return request(app)
       .delete(`/api/v1/pins/${pin._id}`)
       .then(res => {
-        expect(res.body.title).toEqual('this is a title2');
+        expect(res.body.where).toEqual('this is a where2');
       });
   });
 });
