@@ -4,7 +4,6 @@ const request = require('supertest');
 const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
-const User = require('../lib/models/User');
 
 jest.mock('../lib/middleware/ensure-auth.js');
 
@@ -35,6 +34,27 @@ describe('user routes', () => {
           authId: '1234',
           __v: 0
         });
+      });
+  });
+
+  it('can get a list of users', () => {
+    return request(app)
+      .post('/api/v1/users')
+      .then(() => {
+        return request(app)
+          .get('/api/v1/users')
+          .then(res => {
+            expect(res.body).toContainEqual({
+              _id: expect.any(String),
+              firstName: 'eli',
+              lastName: 'nicholson',
+              email: 'bob@bob.com',
+              city: 'Portland, OR',
+              bio: 'this is a bio',
+              authId: '1234',
+              __v: 0
+            });
+          });
       });
   });
 });
