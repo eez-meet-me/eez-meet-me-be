@@ -26,11 +26,8 @@ describe('user routes', () => {
       .then(res => {
         expect(res.body).toEqual({ 
           _id: expect.any(String),
-          firstName: 'eli',
-          lastName: 'nicholson',
+          name: 'bob@bob.com',
           email: 'bob@bob.com',
-          city: 'Portland, OR',
-          bio: 'this is a bio',
           authId: '1234',
           __v: 0
         });
@@ -46,11 +43,8 @@ describe('user routes', () => {
           .then(res => {
             expect(res.body).toContainEqual({
               _id: expect.any(String),
-              firstName: 'eli',
-              lastName: 'nicholson',
+              name: 'bob@bob.com',
               email: 'bob@bob.com',
-              city: 'Portland, OR',
-              bio: 'this is a bio',
               authId: '1234',
               __v: 0
             });
