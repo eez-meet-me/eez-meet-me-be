@@ -24,7 +24,6 @@ describe('user routes', () => {
     return request(app)
       .post('/api/v1/users')
       .then(res => {
-        console.log(res);
         expect(res.body).toEqual({ 
           _id: expect.any(String),
           name: 'bob@bob.com',
