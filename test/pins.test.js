@@ -6,6 +6,8 @@ const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const Pin = require('../lib/models/Pin');
 
+jest.mock('../lib/middleware/ensure-auth.js');
+
 describe('pin routes', () => {
   beforeAll(() => {
     connect();
@@ -26,7 +28,6 @@ describe('pin routes', () => {
         where: 'this is a where',
         message: 'this is a message',
         address: 'alchemy code lab',
-        user: 'erin',
         startTime: '8pm',
         endTime: '10pm'
       })
@@ -38,7 +39,7 @@ describe('pin routes', () => {
           lat: expect.any(Number),
           lng: expect.any(Number),
           address: expect.any(String),
-          user: 'erin',
+          user: expect.any(String),
           startTime: '8pm',
           endTime: '10pm',
           __v: 0
@@ -105,20 +106,21 @@ describe('pin routes', () => {
   });
 
   it('can DELETE a pin', async() => {
-    const pin = await Pin.create({ 
-      where: 'this is a where2',
-      message: 'this is a message',
-      lat: 24,
-      lng: 24,
-      address: 'birmingham',
-      user: 'kayt',
-      startTime: '7pm',
-      endTime: '11pm'
-    });
     return request(app)
-      .delete(`/api/v1/pins/${pin._id}`)
+      .post('/api/v1/pins')
+      .send({
+        where: 'this is a where2',
+        message: 'this is a message',
+        address: 'alchemy code lab',
+        startTime: '8pm',
+        endTime: '10pm'
+      })
       .then(res => {
-        expect(res.body.where).toEqual('this is a where2');
+        return request(app)
+          .delete(`/api/v1/pins/${res.body._id}`)
+          .then(res => {
+            expect(res.body.where).toEqual('this is a where2');
+          });
       });
   });
 });
