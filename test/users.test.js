@@ -4,6 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
+const User = require('../lib/models/User');
 
 jest.mock('../lib/middleware/ensure-auth.js');
 
@@ -29,6 +30,7 @@ describe('user routes', () => {
           name: 'bob@bob.com',
           email: 'bob@bob.com',
           authId: '1234',
+          followers: [],
           __v: 0
         });
       });
@@ -46,9 +48,69 @@ describe('user routes', () => {
               name: 'bob@bob.com',
               email: 'bob@bob.com',
               authId: '1234',
+              followers: [],
               __v: 0
             });
           });
+      });
+  });
+
+  it('can add a follower to the followers array', async() => {
+    await User.create([
+      {
+        name: 'bob',
+        email: 'bob@bob.com',
+        authId: '1234'
+      },
+      {
+        name: 'sarah',
+        email: 'sarah@sarah.com',
+        authId: '4321'
+      }
+    ]);
+
+    return request(app)
+      .patch('/api/v1/users/followers')
+      .send({ email: 'sarah@sarah.com' })
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          name: 'bob',
+          email: 'bob@bob.com',
+          authId: '1234',
+          followers: ['4321'],
+          __v: 0
+        });
+      });
+  });
+
+  it('can get a list of followers', async() => {
+    await User.create([
+      {
+        name: 'bob',
+        email: 'bob@bob.com',
+        authId: '1234',
+        followers: ['sarah@sarah.com']
+      },
+      {
+        name: 'sarah',
+        email: 'sarah@sarah.com',
+        authId: '4321',
+        followers: ['bob@bob.com']
+      }
+    ]);
+
+    return request(app)
+      .get('/api/v1/users/followers')
+      .then(res => {
+        expect(res.body).toEqual([{
+          _id: expect.any(String),
+          name: 'sarah',
+          email: 'sarah@sarah.com',
+          authId: '4321',
+          followers: ['bob@bob.com'],
+          __v: 0
+        }]);
       });
   });
 });
