@@ -83,34 +83,4 @@ describe('user routes', () => {
         });
       });
   });
-
-  it('can get a list of followers', async() => {
-    await User.create([
-      {
-        name: 'bob',
-        email: 'bob@bob.com',
-        authId: '1234',
-        followers: ['sarah@sarah.com']
-      },
-      {
-        name: 'sarah',
-        email: 'sarah@sarah.com',
-        authId: '4321',
-        followers: ['bob@bob.com']
-      }
-    ]);
-
-    return request(app)
-      .get('/api/v1/users/followers')
-      .then(res => {
-        expect(res.body).toEqual([{
-          _id: expect.any(String),
-          name: 'sarah',
-          email: 'sarah@sarah.com',
-          authId: '4321',
-          followers: ['bob@bob.com'],
-          __v: 0
-        }]);
-      });
-  });
 });
