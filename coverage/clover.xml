@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1568668902546" clover="3.2.0">
-  <project timestamp="1568668902547" name="All files">
-    <metrics statements="74" coveredstatements="64" conditionals="7" coveredconditionals="1" methods="21" coveredmethods="18" elements="102" coveredelements="83" complexity="0" loc="74" ncloc="74" packages="6" files="10" classes="10"/>
+<coverage generated="1568952683470" clover="3.2.0">
+  <project timestamp="1568952683470" name="All files">
+    <metrics statements="90" coveredstatements="84" conditionals="9" coveredconditionals="7" methods="30" coveredmethods="28" elements="129" coveredelements="119" complexity="0" loc="90" ncloc="90" packages="6" files="9" classes="9"/>
     <package name="lib">
       <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="app.js" path="/Users/elinicholson/projects/eez-meet-me/eez-meet-me-be/lib/app.js">
@@ -18,23 +18,17 @@
       </file>
     </package>
     <package name="lib.middleware">
-      <metrics statements="15" coveredstatements="6" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="ensure-auth.js" path="/Users/elinicholson/projects/eez-meet-me/eez-meet-me-be/lib/middleware/ensure-auth.js">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-      </file>
+      <metrics statements="12" coveredstatements="8" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="1"/>
       <file name="error.js" path="/Users/elinicholson/projects/eez-meet-me/eez-meet-me-be/lib/middleware/error.js">
-        <metrics statements="8" coveredstatements="2" conditionals="6" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="7" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
-        <line num="5" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="7" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="5" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="7" count="1" type="cond" truecount="3" falsecount="1"/>
         <line num="9" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
       </file>
       <file name="not-found.js" path="/Users/elinicholson/projects/eez-meet-me/eez-meet-me-be/lib/middleware/not-found.js">
         <metrics statements="4" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -45,7 +39,7 @@
       </file>
     </package>
     <package name="lib.models">
-      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="Pin.js" path="/Users/elinicholson/projects/eez-meet-me/eez-meet-me-be/lib/models/Pin.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
@@ -54,44 +48,63 @@
         <line num="40" count="2" type="stmt"/>
       </file>
       <file name="User.js" path="/Users/elinicholson/projects/eez-meet-me/eez-meet-me-be/lib/models/User.js">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="30" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
         <line num="32" count="2" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
       </file>
     </package>
     <package name="lib.routes">
-      <metrics statements="24" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="13"/>
+      <metrics statements="41" coveredstatements="40" conditionals="2" coveredconditionals="1" methods="21" coveredmethods="21"/>
       <file name="pins.js" path="/Users/elinicholson/projects/eez-meet-me/eez-meet-me-be/lib/routes/pins.js">
-        <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
+        <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
       </file>
       <file name="users.js" path="/Users/elinicholson/projects/eez-meet-me/eez-meet-me-be/lib/routes/users.js">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <metrics statements="22" coveredstatements="21" conditionals="2" coveredconditionals="1" methods="12" coveredmethods="12"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
       </file>
     </package>
     <package name="lib.services">
@@ -101,9 +114,9 @@
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
       </file>
     </package>
     <package name="lib.utils">
